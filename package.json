@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/CabbitKheema/read-assist-backend#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "groq-sdk": "^0.12.0"
   }
 }
