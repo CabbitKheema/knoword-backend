@@ -4,9 +4,6 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-// Middleware to parse JSON
-app.use(express.json());
-
 // Configure CORS
 app.use(
   cors({
@@ -20,9 +17,9 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello, Express.js Server!</h1>");
 });
 
-const wordDefinitionRoute = require("./routes/wordDefinition");
+const wordRoutes = require("./routes/wordRoutes");
 
-app.use("/api/v1", wordDefinitionRoute);
+app.use("/api/v1", wordRoutes);
 
 const port = process.env.PORT || 3000;
 
