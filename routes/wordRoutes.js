@@ -17,6 +17,10 @@ const {
 } = require("../controllers/voiceTranscriptionController");
 
 router.post("/find-word-definition", express.json(), getWordMeaningAndContext);
-router.post("/transcribe-word", upload.single("audio"), getVoiceTranscription);
+router.post(
+  "/transcribe-word",
+  upload.single("audioFile"),
+  getVoiceTranscription
+);
 
 module.exports = router;
