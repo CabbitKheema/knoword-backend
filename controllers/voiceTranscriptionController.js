@@ -3,7 +3,7 @@ const {
 } = require("../services/findVoiceTranscription");
 
 exports.getVoiceTranscription = (req, res) => {
-  const { requestFile } = req.file;
+  const requestFile = req.file;
   if (!requestFile) {
     return res.status(400).json({
       statusCode: 400,
