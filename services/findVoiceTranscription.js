@@ -40,12 +40,13 @@ exports.findVoiceTranscription = (requestFile) => {
       })
       .catch((error) => {
         const response = {
-          statusCode: 400,
+          statusCode: error.statusCode || 500, // Fallback to 500 if no statusCode
           message: [
-            "Invalid audio type!",
-            "The audio file object (not file name) to transcribe must be in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm",
+            error.type || "File Processing Error",
+            error.message ||
+              "An unknown error occurred during file processing.",
           ],
-          error: error.message || error,
+          error: error.type || "UnknownError", // Fallback to "UnknownError" if no type
         };
         reject(response);
       });

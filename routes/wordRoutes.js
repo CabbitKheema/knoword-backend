@@ -1,6 +1,14 @@
 const express = require("express");
 const multer = require("multer");
 const multerErrorHandler = require("../middlewares/errors/multerErrorHandler");
+const checkInputTextValidity = require("../middlewares/validations/checkInputTextValidity");
+const checkAudioClipValidity = require("../middlewares/validations/checkAudioClipValidity");
+const {
+  getWordMeaningAndContext,
+} = require("../controllers/wordDefinitionController");
+const {
+  getVoiceTranscription,
+} = require("../controllers/voiceTranscriptionController");
 
 // Set up storage with multer (in-memory storage to avoid saving files to disk)
 const storage = multer.memoryStorage();
@@ -10,19 +18,19 @@ const upload = multer({
 });
 
 const router = express.Router();
-const {
-  getWordMeaningAndContext,
-} = require("../controllers/wordDefinitionController");
-const {
-  getVoiceTranscription,
-} = require("../controllers/voiceTranscriptionController");
 
-router.post("/find-word-definition", express.json(), getWordMeaningAndContext);
+router.post(
+  "/find-word-definition",
+  express.json(),
+  checkInputTextValidity,
+  getWordMeaningAndContext
+);
 router.post(
   "/transcribe-word",
+  express.urlencoded({ extended: true }), // Parses text fields in form data
   upload.single("audioFile"),
   multerErrorHandler,
-  express.urlencoded({ extended: true }), // Parses text fields in form data
+  checkAudioClipValidity,
   getVoiceTranscription
 );
 

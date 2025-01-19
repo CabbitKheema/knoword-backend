@@ -5,11 +5,12 @@ const multerErrorHandler = (err, req, res, next) => {
       return res.status(400).json({
         statusCode: 400,
         message: [
-          "Limit exceeded!",
+          "Bad Request!",
           "Audio file size exceeds the " +
             process.env.AUDIO_FILE_SIZE_LIMIT_IN_MB +
             "MB limit",
         ],
+        error: "Bad Request",
       });
     }
 
