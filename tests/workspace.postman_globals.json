@@ -1,0 +1,27 @@
+{
+	"id": "0a7f39dd-95c6-4e50-8dc4-e405c173438d",
+	"values": [
+		{
+			"key": "INVALID_AUDIO_JPEG_URL",
+			"value": "./invalid_audio_jpeg.jpeg",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "INVALID_AUDIO_MP3_342_SECONDS_4_MB_URL",
+			"value": "./invalid_audio_mp3_342_seconds_4_MB.mp3",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "VALID_AUDIO_MP3_15_SECONDS_143_KB_URL",
+			"value": "./valid_audio_mp3_15_seconds_143_KB.mp3",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-01-20T21:31:58.909Z",
+	"_postman_exported_using": "Postman/11.28.4"
+}

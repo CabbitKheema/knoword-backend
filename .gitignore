@@ -129,5 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# audio temporary storage folder
-uploads
+# reports folder
+tests/reports

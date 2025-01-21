@@ -1,0 +1,1435 @@
+{
+	"info": {
+		"_postman_id": "bc0af1e9-b249-4415-af88-5dfbc6efb759",
+		"name": "Read Assist Backend Tests",
+		"description": "This collection contains test cases for the **read-assist-backend**, a service powering the **Read Assist PWA**. The backend is built using an Express.js server, providing APIs for retrieving word meanings and transcriptions through both text and voice inputs.\n\nThe collection is organized into folders based on API functionality:\n\n1. **Find Word Definition:** Tests the `/find-word-definition` endpoint, which processes text inputs to return word meanings, origins, and usage contexts.\n    \n2. **Transcribe Word:** Tests the `/transcribe-word` endpoint, which handles audio file uploads, transcribes spoken words, and returns their meanings.\n    \n\nEach folder covers a wide range of test scenarios to validate input handling, response accuracy, and error conditions, ensuring the robustness and reliability of the APIs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41172600"
+	},
+	"item": [
+		{
+			"name": "find-word-definition",
+			"item": [
+				{
+					"name": "find-word-definition | valid input",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [200]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    data: {\r",
+									"      type: \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"data\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\":\"Canada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"find-word-definition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-word-definition | sending 101 characters which exceeds 100 character limit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"      enum: [\"Bad Request\"]\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\":\"abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghija\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"find-word-definition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-word-definition | sending empty word",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"      enum: [\"Bad Request\"]\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"find-word-definition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-word-definition | sending space as word",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"      enum: [\"Bad Request\"]\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputText\":\"   \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"find-word-definition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-word-definition | sending empty body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"      enum: [\"Bad Request\"]\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"find-word-definition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-word-definition | sending empty json",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"      enum: [\"Bad Request\"]\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"find-word-definition"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains a set of test cases for the `/find-word-definition` API endpoint, covering a variety of input scenarios to ensure robust validation and accurate responses. The following cases are included:\n\n1. **Valid Input:** Tests the endpoint with a valid input word to verify successful processing and response.\n    \n2. **Exceeding Character Limit:** Sends a word containing 101 characters, exceeding the 100-character limit, to validate error handling.\n    \n3. **Empty Word:** Sends a request with an empty word in the payload to confirm the appropriate error response.\n    \n4. **Space as Word:** Sends a request with a space as the word input to check for proper validation and error messaging.\n    \n5. **Empty Body:** Sends an empty request body to verify that the endpoint correctly rejects it.\n    \n6. **Empty JSON:** Sends an empty JSON object `{}` to ensure the API handles missing required fields appropriately.",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "transcribe-word",
+			"item": [
+				{
+					"name": "transcribe-word | valid audio clip with duration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [200]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    data: {\r",
+									"      type: \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"data\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": "4.0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | duration key absent audio key present",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": "4.0",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | audio key absent duration key present",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}",
+									"disabled": true
+								},
+								{
+									"key": "audioDuration",
+									"value": "4.0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | no form data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}",
+									"disabled": true
+								},
+								{
+									"key": "audioDuration",
+									"value": "4.0",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | empty audio clip proper duration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "audioDuration",
+									"value": "1.0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | empty duration proper audio clip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | space as duration proper audio clip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": " ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | invalid file type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{INVALID_AUDIO_JPEG_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | audio duration is 0.0 second",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": "0.0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | audio exceeds specified duration of 15 seconds (completely dependent on what front-end sends)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": "15.01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transcribe-word | audio exceeds specified file size of 3 MB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  type: \"object\",\r",
+									"  properties: {\r",
+									"    statusCode: {\r",
+									"      type: \"integer\",\r",
+									"      enum: [400]\r",
+									"    },\r",
+									"    message: {\r",
+									"      type: \"array\",\r",
+									"      items: {\r",
+									"        type: \"string\"\r",
+									"      },\r",
+									"      minItems: 2,\r",
+									"      maxItems: 2\r",
+									"    },\r",
+									"    error: {\r",
+									"      type: \"string\",\r",
+									"    }\r",
+									"  },\r",
+									"  required: [\"statusCode\", \"message\", \"error\"],\r",
+									"  additionalProperties: false\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches schema\", () => {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "{{INVALID_AUDIO_MP3_342_SECONDS_4_MB_URL}}"
+								},
+								{
+									"key": "audioDuration",
+									"value": "342.0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"host": [
+								"{{SERVER_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transcribe-word"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains a comprehensive set of test cases for the `/transcribe-word` API endpoint. The tests ensure that the endpoint correctly handles various scenarios involving audio file uploads, durations, and form data validation. The cases include:\n\n1. **Valid Audio Clip with Duration:** Tests the endpoint with a valid audio file and duration to verify successful transcription.\n    \n2. **Duration Key Absent, Audio Key Present:** Sends a request with a valid audio file but without the `duration` key to validate error handling for missing duration.\n    \n3. **Audio Key Absent, Duration Key Present:** Sends a request with a valid `duration` but without an audio file to check for proper validation and error messaging.\n    \n4. **No Form Data:** Sends an empty request without form data to confirm appropriate error responses.\n    \n5. **Empty Audio Clip, Proper Duration:** Tests the API with an empty audio file and a valid duration to verify error handling.\n    \n6. **Empty Duration, Proper Audio Clip:** Sends a request with a valid audio file but an empty duration to validate the duration field's required status.\n    \n7. **Space as Duration, Proper Audio Clip:** Sends a request with a valid audio file but a duration consisting of a space to test validation for invalid duration input.\n    \n8. **Invalid File Type:** Uploads a file with an unsupported format to ensure the API rejects invalid audio types.\n    \n9. **Audio Duration is 0.0 Seconds:** Tests the API with a duration of `0.0` seconds to confirm proper handling of invalid durations.\n    \n10. **Audio Exceeds Specified Duration of 15 Seconds:** Sends a request with an audio file exceeding the allowed duration of 15 seconds to validate duration limits.\n    \n11. **Audio Exceeds Specified File Size of 3 MB:** Uploads an audio file larger than 3 MB to ensure the API enforces file size limits.",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "is-alive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response returns HTML\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", 'text/html; charset=utf-8');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_URL}}/",
+					"host": [
+						"{{SERVER_URL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
