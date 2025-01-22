@@ -1,14 +1,14 @@
 {
 	"info": {
 		"_postman_id": "bc0af1e9-b249-4415-af88-5dfbc6efb759",
-		"name": "Read Assist Backend Tests",
+		"name": "Read_Assist_Backend_Tests",
 		"description": "This collection contains test cases for the **read-assist-backend**, a service powering the **Read Assist PWA**. The backend is built using an Express.js server, providing APIs for retrieving word meanings and transcriptions through both text and voice inputs.\n\nThe collection is organized into folders based on API functionality:\n\n1. **Find Word Definition:** Tests the `/find-word-definition` endpoint, which processes text inputs to return word meanings, origins, and usage contexts.\n    \n2. **Transcribe Word:** Tests the `/transcribe-word` endpoint, which handles audio file uploads, transcribes spoken words, and returns their meanings.\n    \n\nEach folder covers a wide range of test scenarios to validate input handling, response accuracy, and error conditions, ensuring the robustness and reliability of the APIs.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "41172600"
 	},
 	"item": [
 		{
-			"name": "find-word-definition",
+			"name": "find_word_definition",
 			"item": [
 				{
 					"name": "find-word-definition | valid input",
@@ -70,13 +70,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/find-word-definition",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"find-word-definition"
 							]
 						}
@@ -143,13 +143,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/find-word-definition",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"find-word-definition"
 							]
 						}
@@ -216,13 +216,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/find-word-definition",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"find-word-definition"
 							]
 						}
@@ -289,13 +289,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/find-word-definition",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"find-word-definition"
 							]
 						}
@@ -362,13 +362,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/find-word-definition",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"find-word-definition"
 							]
 						}
@@ -435,13 +435,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/find-word-definition",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/find-word-definition",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"find-word-definition"
 							]
 						}
@@ -477,7 +477,7 @@
 			]
 		},
 		{
-			"name": "transcribe-word",
+			"name": "transcribe_word",
 			"item": [
 				{
 					"name": "transcribe-word | valid audio clip with duration",
@@ -535,23 +535,23 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3"
 								},
 								{
 									"key": "audioDuration",
-									"value": "4.0",
+									"value": "3.0",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -613,7 +613,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3"
 								},
 								{
 									"key": "audioDuration",
@@ -624,13 +624,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -692,7 +692,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}",
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3",
 									"disabled": true
 								},
 								{
@@ -703,13 +703,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -771,7 +771,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}",
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3",
 									"disabled": true
 								},
 								{
@@ -783,13 +783,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -861,13 +861,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -929,7 +929,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3"
 								},
 								{
 									"key": "audioDuration",
@@ -939,13 +939,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -1007,7 +1007,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3"
 								},
 								{
 									"key": "audioDuration",
@@ -1017,13 +1017,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -1085,7 +1085,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{INVALID_AUDIO_JPEG_URL}}"
+									"src": "invalid_audio_jpeg.jpeg"
 								},
 								{
 									"key": "audioDuration",
@@ -1095,13 +1095,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -1163,7 +1163,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3"
 								},
 								{
 									"key": "audioDuration",
@@ -1173,13 +1173,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -1241,7 +1241,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{VALID_AUDIO_MP3_15_SECONDS_143_KB_URL}}"
+									"src": "valid_audio_mp3_15_seconds_143_KB.mp3"
 								},
 								{
 									"key": "audioDuration",
@@ -1251,13 +1251,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -1319,7 +1319,7 @@
 								{
 									"key": "audioFile",
 									"type": "file",
-									"src": "{{INVALID_AUDIO_MP3_342_SECONDS_4_MB_URL}}"
+									"src": "invalid_audio_mp3_342_seconds_4_MB.mp3"
 								},
 								{
 									"key": "audioDuration",
@@ -1329,13 +1329,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{SERVER_URL}}/api/v1/transcribe-word",
+							"raw": "{{BACKEND_URL}}/{{FUNCTIONAL_API_NAME}}/{{FUNCTIONAL_API_VERSION}}/transcribe-word",
 							"host": [
-								"{{SERVER_URL}}"
+								"{{BACKEND_URL}}"
 							],
 							"path": [
-								"api",
-								"v1",
+								"{{FUNCTIONAL_API_NAME}}",
+								"{{FUNCTIONAL_API_VERSION}}",
 								"transcribe-word"
 							]
 						}
@@ -1371,6 +1371,52 @@
 			]
 		},
 		{
+			"name": "test_report",
+			"item": [
+				{
+					"name": "test-report | Fetch API's health check report",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response returns HTML\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", 'text/html; charset=UTF-8');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BACKEND_URL}}/{{REPORT_API_NAME}}/{{REPORT_API_VERSION}}/test-report",
+							"host": [
+								"{{BACKEND_URL}}"
+							],
+							"path": [
+								"{{REPORT_API_NAME}}",
+								"{{REPORT_API_VERSION}}",
+								"test-report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "is-alive",
 			"event": [
 				{
@@ -1398,9 +1444,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER_URL}}/",
+					"raw": "{{BACKEND_URL}}/",
 					"host": [
-						"{{SERVER_URL}}"
+						"{{BACKEND_URL}}"
 					],
 					"path": [
 						""

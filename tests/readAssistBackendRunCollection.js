@@ -12,35 +12,19 @@ function ensureDirectoryExistence(filePath) {
 
 // call newman.run to pass `options` object and wait for callback
 function readAssistBackendRunCollection() {
-  const reportPath = "./tests/reports/report.html";
-
   // Ensure the directory exists
-  ensureDirectoryExistence(reportPath);
+  ensureDirectoryExistence(process.env.POSTMAN_TEST_REPORT_FILE_PATH);
 
   newman
     .run({
-      collection: require("./Read Assist Backend Tests.postman_collection.json"),
-      environment: {
-        id: "2e0a413d-55d7-40e1-b80d-c2abb6538ef6",
-        name: "read-assist-backend-local",
-        values: [
-          {
-            key: "SERVER_URL",
-            value: process.env.SERVER_DOMAIN,
-            type: "default",
-            enabled: true,
-          },
-        ],
-        _postman_variable_scope: "environment",
-        _postman_exported_at: "2025-01-20T18:58:14.884Z",
-        _postman_exported_using: "Postman/11.28.4",
-      },
-      globals: require("./workspace.postman_globals.json"),
+      collection: require(process.env.POSTMAN_COLLECTION_FILE_PATH),
+      environment: require(process.env.POSTMAN_ENVIRONMENT_FILE_PATH),
+      globals: require(process.env.POSTMAN_GLOBALS_FILE_PATH),
       reporters: ["htmlextra"],
-      workingDir: "./tests/resources",
+      workingDir: process.env.POSTMAN_WORKING_DIRECTORY,
       reporter: {
         htmlextra: {
-          export: reportPath,
+          export: process.env.POSTMAN_TEST_REPORT_FILE_PATH,
           // template: './template.hbs'
           // logs: true,
           // showOnlyFails: true,

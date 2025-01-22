@@ -131,3 +131,6 @@ dist
 
 # reports folder
 tests/reports
+
+# local tests folder
+tests/local_environment
