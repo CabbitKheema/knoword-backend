@@ -19,7 +19,7 @@ exports.findVoiceTranscription = (requestFile) => {
             const response = {
               statusCode: 200,
               message: [
-                "Successful transcription!",
+                "Transcription Successful!",
                 "Voice transcription is completed",
               ],
               data: transcription.text,

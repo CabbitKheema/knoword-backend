@@ -18,8 +18,8 @@ const checkAudioClipValidity = (req, res, next) => {
   if (!req.file) {
     return res.status(400).json({
       statusCode: 400,
-      message: ["Bad request!", "No voice note found in your request"],
-      error: "Bad request",
+      message: ["Bad Request!", "No voice note found in your request"],
+      error: "Bad Request",
     });
   }
 
