@@ -27,10 +27,10 @@
   <p align="center">
     Express.js backend APIs retrieving word meanings via text/voice for <a href="https://github.com/CabbitKheema/read-assist"><strong>read-assist</strong></a> PWA.
     <br />
-    <a href="https://github.com/CabbitKheema/read-assist-backend"><strong>Explore the docs »</strong></a>
+    <a href="https://www.postman.com/science-physicist-1938228/read-assist/documentation/08isa39/read-assist-backend-tests"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/CabbitKheema/read-assist-backend">View Demo</a>
+    <a href="https://ck-read-assist.netlify.app/">View Demo</a>
     &middot;
     <a href="https://github.com/CabbitKheema/read-assist-backend/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
@@ -70,7 +70,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Encountering unfamiliar words while reading books can disrupt the immersive experience, forcing readers to pause and search for meanings through dictionaries or online tools. The read-assist-backend APIs solve this problem by offering quick access to word definitions, origins, and usage contexts via text input or audio transcription. Integrated into the [read-assist][read-assist-url] PWA, it ensures users can effortlessly stay focused on their reading while resolving any doubts about word meanings. I think this is a great solution for all book readers.
+Encountering unfamiliar words while reading books can disrupt the immersive experience, forcing readers to pause and search for meanings through dictionaries or online tools. The [read-assist-backend][read-assist-backend-url] APIs solve this problem by offering quick access to word definitions, origins, and usage contexts via text input or audio transcription. Integrated into the [read-assist][read-assist-url] PWA, it ensures users can effortlessly stay focused on their reading while resolving any doubts about word meanings. I think this is a great solution for all book readers.
 
 Here's why:
 
@@ -175,13 +175,13 @@ To get a local copy up and running, follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-[Read Assist Backend Tests Collection](https://www.postman.com/science-physicist-1938228/workspace/read-assist/collection/41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759?action=share&creator=41172600&active-environment=41172600-d7a3beb2-5d06-448b-b351-9d68620b0e50) contains test cases for the [read-assist-backend][read-assist-backend-url], a service powering the [read-assist][read-assist-url] PWA.
+[Read Assist Backend Tests Collection][read-assist-backend-tests-collection-url] contains test cases for the [read-assist-backend][read-assist-backend-url], a service powering the [read-assist][read-assist-url] PWA.
 
 Click this to fork the collection to you local postman workspace,
 
-[![Run In Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759%26entityType%3Dcollection%26workspaceId%3D83711707-5270-464c-8e5e-00a5e3fd2209#?env%5Bread_assist_backend_local%5D=W3sia2V5IjoiQkFDS0VORF9VUkwiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJzZXNzaW9uSW5kZXgiOjB9XQ==)  
+[![Run In Postman](https://run.pstmn.io/button.svg)][fork-read-assist-backend-tests-collection-url] 
 
-_For better understanding, please refer to the [Read Assist Backend Tests Documentation](https://www.postman.com/science-physicist-1938228/read-assist/documentation/08isa39/read-assist-backend-tests)_
+_For better understanding, please refer to the [Read Assist Backend Tests Documentation][read-assist-backend-tests-documentation-url]_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -315,6 +315,9 @@ Project Link: [https://github.com/CabbitKheema/read-assist-backend](https://gith
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[read-assist-backend-tests-collection-url]: https://www.postman.com/science-physicist-1938228/workspace/read-assist/collection/41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759?action=share&creator=41172600&active-environment=41172600-d7a3beb2-5d06-448b-b351-9d68620b0e50
+[fork-read-assist-backend-tests-collection-url]: https://app.getpostman.com/run-collection/41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759%26entityType%3Dcollection%26workspaceId%3D83711707-5270-464c-8e5e-00a5e3fd2209#?env%5Bread_assist_backend_local%5D=W3sia2V5IjoiQkFDS0VORF9VUkwiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJzZXNzaW9uSW5kZXgiOjB9XQ==
+[read-assist-backend-tests-documentation-url]: https://www.postman.com/science-physicist-1938228/read-assist/documentation/08isa39/read-assist-backend-tests
 [read-assist-url]: https://github.com/CabbitKheema/read-assist
 [read-assist-backend-url]: https://github.com/CabbitKheema/read-assist-backend
 [contributors-shield]: https://img.shields.io/github/contributors/CabbitKheema/read-assist-backend.svg?style=for-the-badge
