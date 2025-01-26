@@ -106,6 +106,8 @@ To get a local copy up and running, follow these simple steps.
    npm install npm@latest -g
    ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Installation 🌱 <a id="installation"></a>
 
 1. Clone the repo
@@ -141,7 +143,7 @@ To get a local copy up and running, follow these simple steps.
    POSTMAN_ENVIRONMENT_FILE_PATH=./local_environment/read_assist_backend_local.postman_environment.json
    ```
 
-5. Assume `report.html` to be unchanged to avoid pushing an updated `report.html` to base which would delete the template
+5. Assume `report.html` to be unchanged to avoid pushing an updated `report.html` to base which would delete the template <a id="assume-unchanged"></a>
 
    ```sh
    git update-index --assume-unchanged .\tests\reports\report.html
@@ -172,19 +174,74 @@ To get a local copy up and running, follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+[Read Assist Backend Tests Collection](https://www.postman.com/science-physicist-1938228/workspace/read-assist/collection/41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759?action=share&creator=41172600&active-environment=41172600-d7a3beb2-5d06-448b-b351-9d68620b0e50) contains test cases for the [read-assist-backend][read-assist-backend-url], a service powering the [read-assist][read-assist-url] PWA. The backend is built using an Express.js server, providing APIs for retrieving word meanings and transcriptions through both text and voice inputs.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Click this to fork the collection to you local postman workspace,
+
+[![Run In Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D41172600-bc0af1e9-b249-4415-af88-5dfbc6efb759%26entityType%3Dcollection%26workspaceId%3D83711707-5270-464c-8e5e-00a5e3fd2209#?env%5Bread_assist_backend_local%5D=W3sia2V5IjoiQkFDS0VORF9VUkwiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDozMDAwIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJzZXNzaW9uSW5kZXgiOjB9XQ==)  
+
+_For better understanding, please refer to the [Read Assist Backend Tests Documentation](https://www.postman.com/science-physicist-1938228/read-assist/documentation/08isa39/read-assist-backend-tests)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+### **Phase 1: Initial Setup**
+- **Day 1: 16-01-2024**
+  - [x] Set up a simple Node.js server using Express.js
+  - [x] Created a basic server structure to handle HTTP requests
+
+### **Phase 2: API Development**
+- **Day 2: 17-01-2025**
+  - [x] Migrated the word-to-definition API from frontend to backend
+  - [x] Created services for word definition lookup
+  - [x] Set up controllers, routes, and `server.js`
+  - [x] Implemented input validation: Words longer than 100 characters return a `400 Bad Request`
+  - [x] Integrated `dotenv` for environment variables and `cors` for cross-origin requests
+
+- **Day 3: 18-01-2025**
+  - [x] Added transcription service to transcribe audio to text using `groq-sdk`
+  - [x] Replaced storing audio files on the server with the `Groq.toFile` API
+  - [x] Consolidated transcription and word definition controllers into a single router file
+  - [x] Implemented `multer` middleware for managing file uploads
+  - [x] Improved error handling for unsupported audio file types
+
+### **Phase 3: Error Handling and Validation**
+- **Day 4: 19-01-2025**
+  - [x] Introduced audio duration and file size validation for uploads
+  - [x] Implemented middleware to restrict audio duration to `0 < audioDuration <= 15` seconds
+  - [x] Reduced audio file size limit from 5MB to 3MB
+
+- **Day 5: 20-01-2025**
+  - [x] Added input validation middleware:
+    - [x] **`checkAudioClipValidity.js`**: Validates audio duration, file type, and size
+    - [x] **`checkInputTextValidity.js`**: Ensures text input is non-empty and within 1-100 characters
+  - [x] Enhanced error messages for invalid inputs
+  - [x] Tested validation logic using Postman
+
+### **Phase 4: Testing and Reporting**
+- **Day 6: 21-01-2025**
+  - [x] Integrated `newman` for running Postman tests post-deployment
+  - [x] Generated detailed test reports using `newman-reporter-htmlextra`
+  - [x] Hosted test reports at `backendDomain/report/v1/test-report`
+
+- **Day 7: 22-01-2025**
+  - [x] Added new test cases for `/test-report` and `/is-alive` endpoints
+
+### **Phase 5: Documentation**
+- **Day 9-11: 24-01-2025 to 26-01-2025**
+  - [x] Updated the README.md file:
+    - [x] Added prerequisites, installation steps, roadmap, and usage details
+    - [x] Included markdown badges for better visual appeal
+    - [x] Referenced best practices for creating a README
+  - [x] Set up Git to assume `report.html` files are unchanged locally to avoid unnecessary pushes (<a href="#assume-unchanged">changes</a>)
+
+---
+
+### **Pending Tasks**
+  - [ ] Add support for image-based word recognition
+  - [ ] Improve test automation and monitoring
 
 See the [open issues](https://github.com/CabbitKheema/read-assist-backend/issues) for a full list of proposed features (and known issues).
 
@@ -258,6 +315,7 @@ Project Link: [https://github.com/CabbitKheema/read-assist-backend](https://gith
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [read-assist-url]: https://github.com/CabbitKheema/read-assist
+[read-assist-backend-url]: https://github.com/CabbitKheema/read-assist-backend
 [contributors-shield]: https://img.shields.io/github/contributors/CabbitKheema/read-assist-backend.svg?style=for-the-badge
 [contributors-url]: https://github.com/CabbitKheema/read-assist-backend/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/CabbitKheema/read-assist-backend.svg?style=for-the-badge
