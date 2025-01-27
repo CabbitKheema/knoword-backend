@@ -99,10 +99,21 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-1. Download and install Node.js by going through their [official website](https://nodejs.org/en/download)
+1. Download and install nvm by checking this [github-repo](https://github.com/nvm-sh/nvm)
+2. In order to download nvm for windows, click [here](https://github.com/nvm-sh/nvm?tab=readme-ov-file#important-notes)
+3. Verify you have this command available in your shell and that the found version look similar to the below output:
+   ```sh
+   nvm -v
+   
+   1.2.2
+   ```
+4. Install the latest stable release of Node.js
+   ```sh
+   nvm install node
+   ```
    > NPM is included with Node.js installation.
 
-2. Update npm
+5. Update npm (if necessary)
    ```sh
    npm install npm@latest -g
    ```
