@@ -11,7 +11,7 @@ function ensureDirectoryExistence(filePath) {
 }
 
 // call newman.run to pass `options` object and wait for callback
-function readAssistBackendRunCollection() {
+function knoWordBackendRunCollection() {
   // Ensure the directory exists
   ensureDirectoryExistence(process.env.POSTMAN_TEST_REPORT_FILE_PATH);
 
@@ -66,4 +66,4 @@ function readAssistBackendRunCollection() {
     });
 }
 
-module.exports = readAssistBackendRunCollection;
+module.exports = knoWordBackendRunCollection;

@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 const wordRoutes = require("./routes/wordRoutes");
 const reportRoutes = require("./routes/reportRoutes");
-const readAssistBackendRunCollection = require("./tests/readAssistBackendRunCollection");
+const knoWordBackendRunCollection = require("./tests/knoWordBackendRunCollection");
 
 app.use("/api/v1", wordRoutes);
 app.use("/report/v1", reportRoutes);
@@ -28,5 +28,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-  readAssistBackendRunCollection();
+  knoWordBackendRunCollection();
 });

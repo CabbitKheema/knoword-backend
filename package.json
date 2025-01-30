@@ -1,21 +1,21 @@
 {
-  "name": "read-assist-backend",
+  "name": "knoword-backend",
   "version": "1.0.0",
-  "description": "Backend for the read-assist PWA, providing APIs developed using an Express.js server for routing and middleware that helps in retrieving word meanings through text, voice, or image input.",
+  "description": "Backend for the knoword PWA, providing APIs developed using an Express.js server for routing and middleware that helps in retrieving word meanings through text, voice, or image input.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CabbitKheema/read-assist-backend.git"
+    "url": "git+https://github.com/CabbitKheema/knoword-backend.git"
   },
   "author": "CabbitKheema",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CabbitKheema/read-assist-backend/issues"
+    "url": "https://github.com/CabbitKheema/knoword-backend/issues"
   },
-  "homepage": "https://github.com/CabbitKheema/read-assist-backend#readme",
+  "homepage": "https://github.com/CabbitKheema/knoword-backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
