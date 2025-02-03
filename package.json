@@ -1,7 +1,7 @@
 {
   "name": "knoword-backend",
   "version": "1.0.0",
-  "description": "Backend for the knoword PWA, providing APIs developed using an Express.js server for routing and middleware that helps in retrieving word meanings through text, voice, or image input.",
+  "description": "Backend for the knoword PWA, providing APIs developed using an Express.js server for routing and middleware that helps in retrieving word meanings through text, or voice input.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
