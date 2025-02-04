@@ -68,7 +68,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<div style="text-align:center"><img src="images/screenshot.png" href="https://github.com/CabbitKheema/knoword-backend" /></div>
+<p align="center">
+  <a href="https://github.com/CabbitKheema/knoword-backend">
+    <img src="images/screenshot.png" alt="knoWord Screenshot">
+  </a>
+</p>
 
 Encountering unfamiliar words while reading books can disrupt the immersive experience, forcing readers to pause and search for meanings through dictionaries or online tools. The [knoword-backend][knoword-backend-url] APIs solve this problem by offering quick access to word definitions, origins, and usage contexts via text input or audio transcription. Integrated into the [knoword][knoword-url] PWA, it ensures users can effortlessly stay focused on their reading while resolving any doubts about word meanings. I think this is a great solution for all book readers.
 
