@@ -68,7 +68,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<div style="text-align:center"><img src="images/screenshot.png" href="https://github.com/CabbitKheema/knoword-backend" /></div>
 
 Encountering unfamiliar words while reading books can disrupt the immersive experience, forcing readers to pause and search for meanings through dictionaries or online tools. The [knoword-backend][knoword-backend-url] APIs solve this problem by offering quick access to word definitions, origins, and usage contexts via text input or audio transcription. Integrated into the [knoword][knoword-url] PWA, it ensures users can effortlessly stay focused on their reading while resolving any doubts about word meanings. I think this is a great solution for all book readers.
 
@@ -344,7 +344,6 @@ Project Link: [https://github.com/CabbitKheema/knoword-backend](https://github.c
 [license-url]: https://github.com/CabbitKheema/knoword-backend/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/mr-prajwal-k
-[product-screenshot]: images/screenshot.png
 [Node.js]: https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white
 [Node-url]: https://nodejs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
