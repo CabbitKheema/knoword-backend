@@ -17,13 +17,15 @@
 
 <!-- PROJECT LOGO -->
 <br />
+<div align="right">
 <a href="https://groq.com" target="_blank" rel="noopener noreferrer">
   <img
-    style="height:50px;right:0;position:absolute;"
+    style="height:40px;"
     src="https://groq.com/wp-content/uploads/2024/03/PBG-mark1-color.svg"
     alt="Powered by Groq for fast inference."
   />
 </a>
+</div>
 <div align="center">
   <a href="https://github.com/CabbitKheema/knoword-backend">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
