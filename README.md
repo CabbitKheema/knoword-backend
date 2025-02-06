@@ -17,6 +17,13 @@
 
 <!-- PROJECT LOGO -->
 <br />
+<a href="https://groq.com" target="_blank" rel="noopener noreferrer">
+  <img
+    style="height:50px;right:0;position:absolute;"
+    src="https://groq.com/wp-content/uploads/2024/03/PBG-mark1-color.svg"
+    alt="Powered by Groq for fast inference."
+  />
+</a>
 <div align="center">
   <a href="https://github.com/CabbitKheema/knoword-backend">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
@@ -74,7 +81,7 @@
   </a>
 </p>
 
-Encountering unfamiliar words while reading books can disrupt the immersive experience, forcing readers to pause and search for meanings through dictionaries or online tools. The [knoword-backend][knoword-backend-url] APIs solve this problem by offering quick access to word definitions, origins, and usage contexts via text input or audio transcription. Integrated into the [knoword][knoword-url] PWA, it ensures users can effortlessly stay focused on their reading while resolving any doubts about word meanings. I think this is a great solution for all book readers.
+Encountering unfamiliar words while reading books can disrupt the immersive experience, forcing readers to pause and search for meanings through dictionaries or online tools. The [knoword-backend][knoword-backend-url] APIs solve this problem by offering quick access to word definitions, origins, and usage contexts via text input or audio transcription. Powered by the free APIs provided by [Groq Cloud][groq-free-keys-url], it ensures quick and reliable retrieval of word information. Integrated into the [knoword][knoword-url] PWA, it ensures users can effortlessly stay focused on their reading while resolving any doubts about word meanings. I think this is a great solution for all book readers.
 
 Here's why:
 
@@ -136,7 +143,7 @@ To get a local copy up and running, follow these simple steps.
    npm install
    ```
 
-3. Get a free API Key at [Free API Key by Groq Cloud](https://console.groq.com/keys)
+3. Get a free API Key at [Free API Key by Groq Cloud][groq-free-keys-url]
    
 4. Save this in root directory in a file titled `.env` and **follow the commented instructions** prefixed with ```//``` below
    
@@ -356,3 +363,4 @@ Project Link: [https://github.com/CabbitKheema/knoword-backend](https://github.c
 [JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Express.js]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
 [Express-url]: https://expressjs.com/
+[groq-free-keys-url]: https://console.groq.com/keys
