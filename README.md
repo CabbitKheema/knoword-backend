@@ -214,7 +214,7 @@ _For better understanding, please refer to the [knoWord Backend Tests Documentat
 ## Roadmap
 
 ### **Phase 1: Initial Setup**
-- **Day 1: 16-01-2024**
+- **Day 1: 16-01-2025**
   - [x] Set up a simple Node.js server using Express.js
   - [x] Created a basic server structure to handle HTTP requests
 
